@@ -1,1 +1,181 @@
-<p>crear works!</p>
+<div class="col-lg-12">
+  <nb-card>
+    <nb-card-header *ngIf="modoCreacion"> CREAR CANDIDATOS </nb-card-header>
+    <nb-card-header *ngIf="!modoCreacion">MODIFICAR CANDIDATOS</nb-card-header>
+
+    <!-- <nb-card-body>
+      <section class="h-100 h-custom" style="background-color: #bfdff0">
+        <div class="container py-5 h-100">
+          <div
+            class="row d-flex justify-content-center align-items-center h-100"
+          >
+            <div class="col-lg-8 col-xl-6">
+              <div class="card rounded-3">
+                <img
+                  src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img3.webp"
+                  class="w-100"
+                  style="
+                    border-top-left-radius: 0.3rem;
+                    border-top-right-radius: 0.3rem;
+                  "
+                  alt="Sample photo"
+                />
+                <div class="card-body p-4 p-md-5">
+                  <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2 text-center">
+                    Registration
+                  </h3>
+                  <h3
+                    class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2 text-center"
+                    *ngIf="!modoCreacion"
+                  >
+                    Actualizacion
+                  </h3>
+
+                  <form class="px-md-2">
+                    <div class="form-outline mb-4">
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Cedula"
+                        [(ngModel)]="candidato.cedula"
+                        [disabled]="!modoCreacion"
+                      />
+                      <p *ngIf="intentoEnvio && candidato.cedula == ''">
+                        Requerido
+                      </p>
+                    </div>
+
+                    <div class="form-outline mb-4">
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Nombre"
+                        [(ngModel)]="candidato.nombre"
+                      />
+                      <p *ngIf="intentoEnvio && candidato.nombre == ''">
+                        Requerido
+                      </p>
+                    </div>
+
+                    <div class="form-outline mb-4">
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Apellidos"
+                        [(ngModel)]="candidato.apellido"
+                      />
+                      <p *ngIf="intentoEnvio && candidato.apellido == ''">
+                        Requerido
+                      </p>
+                    </div>
+                    <div class="form-outline mb-4">
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Nombre de la Resolucion"
+                        [(ngModel)]="candidato.nombre_resolucion"
+                      />
+                      <p
+                        *ngIf="
+                          intentoEnvio && candidato.nombre_resolucion == ''
+                        "
+                      >
+                        Requerido
+                      </p>
+                    </div>
+
+                    <div class="text-center">
+                      <button
+                        type="button"
+                        class="btn btn-primary btn-lg btn-block mb-1"
+                        *ngIf="modoCreacion"
+                        (click)="agregar()"
+                      >
+                        Crear Candidato
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btn-info btn-lg btn-block mb-1"
+                        *ngIf="!modoCreacion"
+                        (click)="editar()"
+                      >
+                        Modificar Candidato
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </nb-card-body> -->
+
+    <nb-card-body>
+      <div class="row">
+        <div class="col-3">
+          <label> Cédula</label>
+        </div>
+        <div class="col-9">
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="candidato.cedula"
+            [disabled]="!modoCreacion"
+          />
+          <p *ngIf="intentoEnvio && candidato.cedula == ''">Requerido</p>
+        </div>
+      </div>
+      <br />
+
+      <div class="row">
+        <div class="col-3">
+          <label> Nombre</label>
+        </div>
+        <div class="col-9">
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="candidato.nombre"
+          />
+          <p *ngIf="intentoEnvio && candidato.nombre == ''">Requerido</p>
+        </div>
+      </div>
+      <br />
+
+      <div class="row">
+        <div class="col-3">
+          <label>Apellido</label>
+        </div>
+        <div class="col-9">
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="candidato.apellido"
+          />
+          <p *ngIf="intentoEnvio && candidato.apellido == ''">Requerido</p>
+        </div>
+      </div>
+
+      <br />
+      <div class="row">
+        <button
+          type="button"
+          *ngIf="modoCreacion"
+          class="btn btn-primary btn-block"
+          (click)="agregar()"
+        >
+          Crear Candidato
+        </button>
+        <button
+          type="button"
+          *ngIf="!modoCreacion"
+          class="btn btn-primary btn-block"
+          (click)="editar()"
+        >
+          Modificar Candidato
+        </button>
+      </div>
+    </nb-card-body>
+  </nb-card>
+</div>

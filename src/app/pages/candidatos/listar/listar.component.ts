@@ -25,9 +25,11 @@ export class ListarComponent implements OnInit {
     "Nombre Resolucion",
     "Opciones",
   ];
-  router: any;
 
-  constructor(private miCandidatoService: CandidatoService) {}
+  constructor(
+    private miCandidatoService: CandidatoService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.listar();
