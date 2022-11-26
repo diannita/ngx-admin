@@ -1,28 +1,43 @@
 <div class="col-lg-12">
   <nb-card>
     <nb-card-header>
-      Administracion de Candidatos
-      <button type="button" class="btn btn-success">
-        <fa-icon [icon]="faPlusCircle"></fa-icon>
+      Administracion de Candidatos &nbsp;
+      <button type="button" class="btn btn-success" (click)="agregar()">
+        <fa-icon [icon]="faUserEdit"></fa-icon>
       </button>
     </nb-card-header>
   </nb-card>
   <table class="table">
     <thead class="thead-dark">
       <tr>
-        <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
+        <th *ngFor="let columna of nombresColumnas">{{ columna }}</th>
       </tr>
     </thead>
+
     <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-      </tr>
+      <ng-container *ngFor="let candidatosActual of candidatos">
+        <tr>
+          <td>{{ candidatosActual.cedula }}</td>
+          <td>{{ candidatosActual.nombre }}</td>
+          <td>{{ candidatosActual.apellido }}</td>
+          <td>{{ candidatosActual.nombre_resolucion }}</td>
+          <button
+            type="button"
+            class="btn btn-info"
+            (click)="editar(candidatosActual._id)"
+          >
+            <fa-icon [icon]="faPencilAlt"></fa-icon>
+          </button>
+          &nbsp;
+          <button
+            type="button"
+            class="btn btn-danger"
+            (click)="eliminar(candidatosActual._id)"
+          >
+            <fa-icon [icon]="faTrash"></fa-icon>
+          </button>
+        </tr>
+      </ng-container>
     </tbody>
   </table>
 </div>
