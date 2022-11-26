@@ -49,7 +49,35 @@ export class ListarComponent implements OnInit {
     );
   }
 
-  agregar(): void {}
-  editar(id: string): void {}
-  eliminar(id: string): void {}
+  agregar(): void {
+    this.router.navigate(["pages/candidatos/crear"]);
+  }
+
+  editar(id: string): void {
+    this.router.navigate(["pages/candidatos/actualizar/" + id]);
+  }
+
+  eliminar(id: string): void {
+    Swal.fire({
+      title: "Eliminación de Candidatos",
+      text: "¿Está seguro de eliminar el Candidato seleccionado?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#74DE30",
+      confirmButtonText: "Si, eliminar",
+      cancelButtonColor: "#E7461E",
+      cancelButtonText: "Cancelar",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.miCandidatoService.eliminar(id).subscribe((data) => {
+          this.ngOnInit();
+          Swal.fire({
+            title: "Eliminación de candidato",
+            text: "El candidato se eliminó correctamente!!",
+            icon: "success",
+          });
+        });
+      }
+    });
+  }
 }
